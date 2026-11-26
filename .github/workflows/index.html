@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio & CV - Noval Firdaus</title>
+    <!-- Tailwind CSS untuk tata letak responsif & elegan -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome untuk Ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#0f172a',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Animasi halus saat scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: all 0.7s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Kursor efek mengetik */
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 0.8s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 antialiased selection:bg-blue-600 selection:text-white">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="#home" class="text-xl font-extrabold tracking-tight text-blue-600 dark:text-blue-400">
+                    Noval<span class="text-slate-800 dark:text-white">.dev</span>
+                </a>
+                
+                <!-- Menu Desktop -->
+                <div class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                    <a href="#tentang" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Tentang</a>
+                    <a href="#keahlian" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Keahlian</a>
+                    <a href="#pendidikan" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Pendidikan</a>
+                    <a href="#portofolio" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Portofolio</a>
+                    <a href="#kontak" class="px-4 py-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition shadow-sm">Hubungi Saya</a>
+                </div>
+
+                <!-- Tombol Dark Mode & Mobile Menu -->
+                <div class="flex items-center space-x-3">
+                    <button id="theme-toggle" aria-label="Ganti Tema" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+                        <i id="theme-icon" class="fas fa-moon"></i>
+                    </button>
+                    <button id="mobile-menu-btn" aria-label="Menu" class="md:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu Mobile Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 pt-2 pb-4 space-y-2">
+            <a href="#tentang" class="block py-2 text-sm font-medium hover:text-blue-600">Tentang</a>
+            <a href="#keahlian" class="block py-2 text-sm font-medium hover:text-blue-600">Keahlian</a>
+            <a href="#pendidikan" class="block py-2 text-sm font-medium hover:text-blue-600">Pendidikan</a>
+            <a href="#portofolio" class="block py-2 text-sm font-medium hover:text-blue-600">Portofolio</a>
+            <a href="#kontak" class="block py-2 text-sm font-semibold text-blue-600">Hubungi Saya</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-28 pb-20 md:pt-36 md:pb-28 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+        <div class="flex flex-col-reverse md:flex-row items-center justify-between gap-12">
+            <!-- Teks Utama -->
+            <div class="flex-1 text-center md:text-left space-y-6">
+                <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300">
+                    <span class="w-2 h-2 rounded-full bg-blue-600 mr-2 animate-ping"></span>
+                    Calon Pendidik & Praktisi IT
+                </div>
+                
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                    Halo, Saya <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-500">Noval Firdaus</span>
+                </h1>
+                
+                <p class="text-lg sm:text-xl font-medium text-slate-600 dark:text-slate-300 h-8">
+                    Fokus pada <span id="typing-text" class="text-blue-600 dark:text-blue-400 font-bold typing-cursor"></span>
+                </p>
+
+                <p class="text-slate-600 dark:text-slate-400 max-w-xl mx-auto md:mx-0 leading-relaxed">
+                    Memiliki dedikasi tinggi di bidang teknologi informasi dengan tujuan karir menjadi <strong>Guru Informatika</strong> yang inspiratif, kreatif, dan adaptif terhadap perkembangan teknologi digital.
+                </p>
+
+                <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-2">
+                    <a href="https://noval2710.github.io/SwarnaNuswantaratim12/" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700 transition shadow-lg shadow-blue-600/25 flex items-center gap-2">
+                        <i class="fas fa-globe"></i> Lihat Portofolio Utama
+                    </a>
+                    <a href="#kontak" class="px-6 py-3 rounded-xl border border-slate-300 dark:border-slate-700 font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition flex items-center gap-2">
+                        <i class="fas fa-paper-plane"></i> Kontak Saya
+                    </a>
+                </div>
+            </div>
+
+            <!-- Foto Profil -->
+            <div class="relative group">
+                <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-500 rounded-full blur opacity-30 group-hover:opacity-60 transition duration-500"></div>
+                <div class="relative w-56 h-56 sm:w-72 sm:h-72 rounded-full overflow-hidden border-4 border-white dark:border-slate-800 shadow-2xl bg-slate-200 dark:bg-slate-800">
+                    <!-- Catatan: Karena link Pinterest adalah halaman board/pin (bukan direct image URL), fallback gambar disiapkan otomatis jika browser memblokir pemuatan halaman -->
+                    <img 
+                        src="https://i.pinimg.com/736x/8c/6e/03/8c6e0390a3998170253035052988d67a.jpg" 
+                        data-pinterest-ref="https://id.pinterest.com/willarchr/levi-ackerman/"
+                        onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=Noval+Firdaus&background=2563eb&color=fff&size=512';"
+                        alt="Foto Profil Noval Firdaus" 
+                        class="w-full h-full object-cover object-center transform group-hover:scale-105 transition duration-500"
+                    >
+                </div>
+                <a href="https://id.pinterest.com/willarchr/levi-ackerman/" target="_blank" rel="noopener noreferrer" title="Sumber Referensi Foto" class="absolute bottom-3 right-3 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 p-2.5 rounded-full shadow-md border border-slate-200 dark:border-slate-700 hover:text-blue-600 transition text-xs">
+                    <i class="fab fa-pinterest text-red-600 text-base"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tentang & Tujuan Karir -->
+    <section id="tentang" class="py-16 bg-white dark:bg-slate-900/50 border-y border-slate-200/80 dark:border-slate-800/80">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+            <div class="grid md:grid-cols-3 gap-8 items-center">
+                <div class="md:col-span-2 space-y-4">
+                    <h2 class="text-sm font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">Profil & Visi Karir</h2>
+                    <h3 class="text-2xl sm:text-3xl font-bold">Membangun Generasi Melek Teknologi</h3>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                        Saya <strong>Noval Firdaus</strong>, berdomisili di Dusun Krajan Barat, Desa Singojuruh, Kecamatan Singojuruh, Kabupaten Banyuwangi. Dengan latar belakang pendidikan kejuruan dan keterampilan teknis di bidang jaringan komputer, pengembangan web, serta produksi multimedia, saya berkomitmen untuk meniti karir sebagai <strong>Guru Informatika</strong>.
+                    </p>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                        Saya percaya bahwa pembelajaran informatika yang efektif menggabungkan pemahaman konsep dasar komputasi dengan praktik langsung yang menyenangkan dan relevan dengan kebutuhan industri saat ini.
+                    </p>
+                </div>
+
+                <!-- Kartu Informasi Singkat -->
+                <div class="bg-slate-50 dark:bg-slate-800/80 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 space-y-4 shadow-sm">
+                    <h4 class="font-bold text-lg border-b border-slate-200 dark:border-slate-700 pb-2">Biodata Singkat</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-user text-blue-600 mt-1 w-4"></i>
+                            <div>
+                                <span class="text-slate-400 block text-xs">Nama Lengkap</span>
+                                <span class="font-medium">Noval Firdaus</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-bullseye text-blue-600 mt-1 w-4"></i>
+                            <div>
+                                <span class="text-slate-400 block text-xs">Tujuan Karir</span>
+                                <span class="font-medium">Guru Informatika</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-map-marker-alt text-blue-600 mt-1 w-4"></i>
+                            <div>
+                                <span class="text-slate-400 block text-xs">Alamat</span>
+                                <span class="font-medium">Dusun Krajan Barat, Desa Singojuruh, Kec. Singojuruh</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Keahlian (Skills) -->
+    <section id="keahlian" class="py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+        <div class="text-center max-w-2xl mx-auto mb-14">
+            <h2 class="text-sm font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">Kompetensi Utama</h2>
+            <h3 class="text-3xl font-bold mt-2">Keahlian & Bidang Penguasaan</h3>
+            <p class="text-slate-500 dark:text-slate-400 mt-3 text-sm">Kombinasi kemampuan teknis infrastruktur IT, pengembangan aplikasi web, dan kreativitas konten digital.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Skill 1 -->
+            <div class="group bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-500 transition shadow-sm hover:shadow-xl">
+                <div class="w-14 h-14 rounded-xl bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
+                    <i class="fas fa-network-wired"></i>
+                </div>
+                <h4 class="text-xl font-bold mb-3">Teknik Komputer & Jaringan</h4>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">
+                    Perakitan dan perawatan perangkat keras komputer, instalasi sistem operasi, konfigurasi jaringan lokal (LAN/WLAN), serta troubleshooting konektivitas.
+                </p>
+                <div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                    <div class="bg-blue-600 h-full rounded-full" style="width: 90%"></div>
+                </div>
+            </div>
+
+            <!-- Skill 2 -->
+            <div class="group bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-indigo-500 dark:hover:border-indigo-500 transition shadow-sm hover:shadow-xl">
+                <div class="w-14 h-14 rounded-xl bg-indigo-100 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h4 class="text-xl font-bold mb-3">Pemrograman Web</h4>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">
+                    Perancangan dan pengembangan antarmuka website modern yang responsif dan interaktif menggunakan HTML, CSS, JavaScript, serta pengelolaan repositori GitHub.
+                </p>
+                <div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                    <div class="bg-indigo-600 h-full rounded-full" style="width: 85%"></div>
+                </div>
+            </div>
+
+            <!-- Skill 3 -->
+            <div class="group bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-emerald-500 dark:hover:border-emerald-500 transition shadow-sm hover:shadow-xl">
+                <div class="w-14 h-14 rounded-xl bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition">
+                    <i class="fas fa-film"></i>
+                </div>
+                <h4 class="text-xl font-bold mb-3">Edit Video & Multimedia</h4>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">
+                    Penyuntingan video kreatif, pembuatan media pembelajaran berbasis audiovisual, pengaturan transisi, audio mixing, dan visual storytelling.
+                </p>
+                <div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+                    <div class="bg-emerald-600 h-full rounded-full" style="width: 85%"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Riwayat Pendidikan -->
+    <section id="pendidikan" class="py-20 bg-white dark:bg-slate-900/50 border-y border-slate-200/80 dark:border-slate-800/80">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+            <div class="text-center mb-14">
+                <h2 class="text-sm font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">Latar Belakang Akademik</h2>
+                <h3 class="text-3xl font-bold mt-2">Riwayat Pendidikan</h3>
+            </div>
+
+            <div class="relative border-l-2 border-blue-600 dark:border-blue-500 ml-4 md:ml-8 space-y-10">
+                <!-- Item 1 -->
+                <div class="relative pl-8">
+                    <span class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-blue-600 ring-4 ring-blue-100 dark:ring-slate-900"></span>
+                    <div class="bg-slate-50 dark:bg-slate-800/90 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+                        <span class="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">Pendidikan Menengah Kejuruan</span>
+                        <h4 class="text-xl font-bold mt-1">SMK Ihya Ulumuddin Singojuruh</h4>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mt-2">
+                            Menempuh pendidikan kejuruan dengan fokus pada penguasaan keterampilan teknis, kedisiplinan, dan kesiapan kerja di bidang teknologi informasi.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="relative pl-8">
+                    <span class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-blue-600 ring-4 ring-blue-100 dark:ring-slate-900"></span>
+                    <div class="bg-slate-50 dark:bg-slate-800/90 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+                        <span class="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">Pendidikan Menengah Pertama</span>
+                        <h4 class="text-xl font-bold mt-1">MTsN 10 Banyuwangi</h4>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mt-2">
+                            Membangun fondasi akademik yang kuat serta nilai-nilai karakter dan etika belajar.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="relative pl-8">
+                    <span class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-blue-600 ring-4 ring-blue-100 dark:ring-slate-900"></span>
+                    <div class="bg-slate-50 dark:bg-slate-800/90 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+                        <span class="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">Pendidikan Dasar</span>
+                        <h4 class="text-xl font-bold mt-1">SDN 1 Singojuruh</h4>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mt-2">
+                            Menyelesaikan pendidikan dasar di lingkungan Kecamatan Singojuruh, Banyuwangi.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portofolio Unggulan -->
+    <section id="portofolio" class="py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+            <h2 class="text-sm font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">Karya & Proyek</h2>
+            <h3 class="text-3xl font-bold mt-2">Portofolio Web</h3>
+        </div>
+
+        <div class="bg-gradient-to-br from-slate-900 to-blue-950 text-white rounded-3xl p-8 md:p-12 shadow-xl overflow-hidden relative">
+            <div class="grid md:grid-cols-2 gap-8 items-center relative z-10">
+                <div class="space-y-4">
+                    <span class="inline-block px-3 py-1 bg-blue-500/20 border border-blue-400/30 rounded-full text-xs font-semibold text-blue-300">
+                        Proyek Web GitHub Pages
+                    </span>
+                    <h4 class="text-2xl sm:text-3xl font-bold">Swarna Nuswantara (Tim 12)</h4>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                        Proyek website yang dikembangkan dan di-hosting melalui GitHub Pages. Menampilkan implementasi desain web responsif, struktur informasi yang rapi, serta navigasi interaktif.
+                    </p>
+                    <div class="pt-2">
+                        <a href="https://noval2710.github.io/SwarnaNuswantaratim12/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white text-slate-900 font-bold hover:bg-blue-50 transition shadow-md">
+                            <span>Kunjungi Website</span>
+                            <i class="fas fa-external-link-alt text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="bg-slate-800/60 border border-slate-700/80 rounded-2xl p-6 space-y-3">
+                    <div class="flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-red-500"></span>
+                        <span class="w-3 h-3 rounded-full bg-yellow-500"></span>
+                        <span class="w-3 h-3 rounded-full bg-green-500"></span>
+                        <span class="text-xs text-slate-400 ml-2 truncate">noval2710.github.io/SwarnaNuswantaratim12/</span>
+                    </div>
+                    <div class="p-4 rounded-xl bg-slate-900/90 border border-slate-700 text-xs font-mono text-blue-300 space-y-1">
+                        <p>&lt;!-- Proyek Web Portofolio --&gt;</p>
+                        <p class="text-slate-300">Author: Noval Firdaus</p>
+                        <p class="text-emerald-400">Status: Live on GitHub Pages</p>
+                        <p class="text-slate-400">Tech: HTML5, CSS3, Responsive UI</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontak -->
+    <section id="kontak" class="py-20 bg-white dark:bg-slate-900/50 border-t border-slate-200/80 dark:border-slate-800/80">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+            <div class="text-center max-w-xl mx-auto mb-12">
+                <h2 class="text-sm font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">Mari Terhubung</h2>
+                <h3 class="text-3xl font-bold mt-2">Informasi Kontak</h3>
+                <p class="text-slate-500 dark:text-slate-400 mt-2 text-sm">Jangan ragu untuk menghubungi saya terkait peluang mengajar Informatika, kolaborasi proyek web, maupun multimedia.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-3 gap-6">
+                <!-- Telepon / WhatsApp -->
+                <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 text-center space-y-3">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-green-100 dark:bg-green-900/40 text-green-600 dark:text-green-400 flex items-center justify-center text-xl">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h4 class="font-bold">Telepon / WhatsApp</h4>
+                    <p class="text-sm text-slate-600 dark:text-slate-300 font-medium">0813-9839-4835</p>
+                    <div class="flex justify-center gap-2 pt-1">
+                        <a href="https://wa.me/6281398394835" target="_blank" rel="noopener noreferrer" class="text-xs px-3 py-1.5 rounded-lg bg-green-600 text-white hover:bg-green-700 transition">Chat WA</a>
+                        <button onclick="copyText('081398394835', this)" class="text-xs px-3 py-1.5 rounded-lg bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 transition">Salin</button>
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 text-center space-y-3">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 flex items-center justify-center text-xl">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h4 class="font-bold">Email</h4>
+                    <p class="text-sm text-slate-600 dark:text-slate-300 font-medium break-all">firdausnoval632@gmail.com</p>
+                    <div class="flex justify-center gap-2 pt-1">
+                        <a href="mailto:firdausnoval632@gmail.com" class="text-xs px-3 py-1.5 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition">Kirim Email</a>
+                        <button onclick="copyText('firdausnoval632@gmail.com', this)" class="text-xs px-3 py-1.5 rounded-lg bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 transition">Salin</button>
+                    </div>
+                </div>
+
+                <!-- Alamat -->
+                <div class="bg-slate-50 dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 text-center space-y-3">
+                    <div class="w-12 h-12 mx-auto rounded-full bg-indigo-100 dark:bg-indigo-900/40 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-xl">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h4 class="font-bold">Alamat Domisili</h4>
+                    <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                        Dusun Krajan Barat, Desa Singojuruh, Kec. Singojuruh, Kab. Banyuwangi
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 text-center text-sm text-slate-500 dark:text-slate-400 border-t border-slate-200 dark:border-slate-800">
+        <p>&copy; <span id="year"></span> <strong>Noval Firdaus</strong>. Dibuat untuk Portofolio & CV Digital.</p>
+    </footer>
+
+    <!-- JavaScript Interaktif -->
+    <script>
+        // 1. Tahun otomatis di Footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // 2. Toggle Dark / Light Mode
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const htmlEl = document.documentElement;
+
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            htmlEl.classList.add('dark');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            htmlEl.classList.toggle('dark');
+            const isDark = htmlEl.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            themeIcon.classList.replace(isDark ? 'fa-moon' : 'fa-sun', isDark ? 'fa-sun' : 'fa-moon');
+        });
+
+        // 3. Toggle Mobile Menu
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Tutup menu mobile saat link diklik
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        // 4. Efek Mengetik (Typing Effect)
+        const words = ["Guru Informatika", "Teknik Komputer & Jaringan", "Pemrograman Web", "Edit Video Kreatif"];
+        let wordIdx = 0;
+        let charIdx = 0;
+        let isDeleting = false;
+        const typingEl = document.getElementById('typing-text');
+
+        function typeEffect() {
+            const currentWord = words[wordIdx];
+            if (isDeleting) {
+                typingEl.textContent = currentWord.substring(0, charIdx - 1);
+                charIdx--;
+            } else {
+                typingEl.textContent = currentWord.substring(0, charIdx + 1);
+                charIdx++;
+            }
+
+            let speed = isDeleting ? 50 : 100;
+
+            if (!isDeleting && charIdx === currentWord.length) {
+                speed = 1800;
+                isDeleting = true;
+            } else if (isDeleting && charIdx === 0) {
+                isDeleting = false;
+                wordIdx = (wordIdx + 1) % words.length;
+                speed = 400;
+            }
+            setTimeout(typeEffect, speed);
+        }
+        document.addEventListener('DOMContentLoaded', typeEffect);
+
+        // 5. Animasi Scroll Reveal
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(el => {
+                const windowHeight = window.innerHeight;
+                const elementTop = el.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 80) {
+                    el.classList.add('active');
+                }
+            });
+        }
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+
+        // 6. Fungsi Salin Teks (Nomor Telepon & Email)
+        function copyText(text, btn) {
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = btn.textContent;
+                btn.textContent = 'Tersalin!';
+                btn.classList.add('bg-blue-600', 'text-white');
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.classList.remove('bg-blue-600', 'text-white');
+                }, 1500);
+            });
+        }
+    </script>
+</body>
+</html>
